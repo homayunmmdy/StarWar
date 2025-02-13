@@ -26,11 +26,10 @@ html {
 
 .jet {
   display: block;
-  background: url('images/jet.jpg') no-repeat center center;
+  background: url('images/jet.png') no-repeat center center;
   background-size: cover;
   width: var(--blockSize);
   height: var(--blockSize);
-  background-color: yellow;
   position: absolute;
   top: 0;
   left: 0;
