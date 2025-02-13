@@ -16,7 +16,8 @@ html {
 }
 
 .body {
-  background-color: #04040a;
+  background: url('images/space.webp') no-repeat center center;
+  background-size: cover;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -25,6 +26,8 @@ html {
 
 .jet {
   display: block;
+  background: url('images/jet.jpg') no-repeat center center;
+  background-size: cover;
   width: var(--blockSize);
   height: var(--blockSize);
   background-color: yellow;
