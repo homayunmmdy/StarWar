@@ -7,13 +7,18 @@ export class Jet {
   
     constructor(blockElement: HTMLElement) {
       this.blockElement = blockElement;
-      this.posX = 0;
-      this.posY = 0;
+      
+      // Initialize position to bottom center
+      this.posX = (window.innerWidth - BLOCK_SIZE) / 2;
+      this.posY = window.innerHeight - BLOCK_SIZE;
     
+      // Update the position immediately
+      this.updatePosition();
+
       // Add keydown event listener for movement controls
       window.addEventListener("keydown", (event) => this.move(event));
     }
-  
+
     updatePosition(): void {
       this.blockElement.style.left = `${this.posX}px`;
       this.blockElement.style.top = `${this.posY}px`;
