@@ -15,7 +15,8 @@ export class Jet {
     }
   
     updatePosition(): void {
-      this.blockElement.style.transform = `translate(${this.posX}px, ${this.posY}px)`;
+      this.blockElement.style.left = `${this.posX}px`;
+      this.blockElement.style.top = `${this.posY}px`;
     }
   
     move(event: KeyboardEvent): void {
@@ -48,6 +49,4 @@ export class Jet {
         this.updatePosition();
       }
     }
-  
-
-  }
+}
