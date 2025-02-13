@@ -36,10 +36,15 @@ html {
 }
 
 .enemy {
-  display: block;
-  width: var(--blockSize);
-  height: var(--blockSize);
-  background-color: red;
   position: absolute;
-  top: 0; /* Fixed at the top of the page */
+  width: 40px;
+  height: 40px;
+  background-color: green;
+}
+
+.shot {
+  position: absolute;
+  width: 4px;
+  height: 10px;
+  background-color: red;
 }
