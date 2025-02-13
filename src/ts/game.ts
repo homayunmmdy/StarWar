@@ -10,6 +10,7 @@ class Game {
         const jetElement = document.getElementById("jet") as HTMLElement;
         this.jet = new Jet(jetElement);
 
+
         // Create multiple enemies
         this.createEnemies(5); // Create 5 enemies
     }

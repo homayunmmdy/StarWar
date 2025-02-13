@@ -2,6 +2,7 @@ export class Shot {
     private shotElement: HTMLElement;
     private posX: number;
     private posY: number;
+    private moveInterval: number;
 
     constructor(startX: number, startY: number) {
         this.posX = startX;
@@ -18,21 +19,22 @@ export class Shot {
         this.shotElement.style.backgroundColor = "red";
         document.body.appendChild(this.shotElement);
 
-        // Move the shot upwards
-        this.move();
+        // Move the shot upwards and check for collisions
+        this.moveInterval = setInterval(() => this.move(), 16); // ~60 FPS
     }
 
     move(): void {
-        const moveInterval = setInterval(() => {
-            this.posY -= 5; // Move the shot upwards
-            this.shotElement.style.top = `${this.posY}px`;
+        this.posY -= 5; // Move the shot upwards
+        this.shotElement.style.top = `${this.posY}px`;
 
-            // Remove the shot if it goes off-screen
-            if (this.posY < 0) {
-                clearInterval(moveInterval);
-                this.shotElement.remove();
-            }
-        }, 16); // ~60 FPS
+        // Remove the shot if it goes off-screen
+        if (this.posY < 0) {
+            this.remove();
+            return;
+        }
+
+        // Check for collisions with enemies
+        this.checkCollisions();
     }
 
     checkCollisions(): void {
@@ -51,8 +53,13 @@ export class Shot {
             ) {
                 // Remove the enemy and the shot
                 enemy.remove();
-                this.shotElement.remove();
+                this.remove();
             }
         });
+    }
+
+    remove(): void {
+        clearInterval(this.moveInterval); // Stop the shot's movement
+        this.shotElement.remove(); // Remove the shot from the DOM
     }
 }

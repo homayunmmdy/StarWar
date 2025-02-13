@@ -66,8 +66,5 @@ export class Jet {
         // Create a new shot at the jet's current position
         const shot = new Shot(this.posX + BLOCK_SIZE / 2, this.posY);
         this.shots.push(shot);
-
-        // Check for collisions with enemies
-        shot.checkCollisions();
     }
 }
