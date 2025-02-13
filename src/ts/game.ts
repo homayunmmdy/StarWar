@@ -1,8 +1,12 @@
+import { Jet } from "./jet";
+
 class Game {
-  private jet;
+    private blockElement: HTMLElement;
+  private jet: Jet;
 
   constructor() {
-    this.jet = document.getElementById("jet") as HTMLElement;
+    this.blockElement = document.getElementById("jet") as HTMLElement;
+    this.jet = new Jet(this.blockElement);
   }
   initialize(): void {
     console.log(this.jet)
