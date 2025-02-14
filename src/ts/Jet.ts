@@ -1,4 +1,4 @@
-import { BLOCK_SIZE } from "../config/config";
+import { BLOCK_SIZE, MAXIMUM_SHOT } from "../config/config";
 import { Shot } from "./Shot";
 
 export class Jet {
@@ -6,6 +6,8 @@ export class Jet {
     private posX: number;
     private posY: number;
     private shots: Shot[] = []; // Array to track active shots
+    private shotCount: number = 0; // Track the number of shots fired
+    private maxShots: number = MAXIMUM_SHOT; // Maximum number of shots allowed
 
     constructor(blockElement: HTMLElement) {
         this.blockElement = blockElement;
@@ -63,8 +65,48 @@ export class Jet {
     }
 
     shoot(): void {
+        if (this.shotCount >= this.maxShots) {
+            this.gameOver();
+            return;
+        }
+
         // Create a new shot at the jet's current position
         const shot = new Shot(this.posX + BLOCK_SIZE / 2, this.posY);
         this.shots.push(shot);
+        this.shotCount++;
+
+        // Optionally, display the remaining shots
+        console.log(`Shots remaining: ${this.maxShots - this.shotCount}`);
+    }
+
+    gameOver(): void {
+        // Display "Game Over" message
+        const gameOverMessage = document.createElement("div");
+        gameOverMessage.textContent = "Game Over";
+        gameOverMessage.className = "game-over-message"; // Apply CSS class
+        document.body.appendChild(gameOverMessage);
+    
+        // Create a restart button
+        const restartButton = document.createElement("button");
+        restartButton.textContent = "Restart";
+        restartButton.className = "restart-button"; // Apply CSS class
+        document.body.appendChild(restartButton);
+    
+        // Add event listener to restart the game by refreshing the page
+        restartButton.addEventListener("click", () => {
+            location.reload(); // Refresh the page
+        });
+}
+    
+    restartGame(): void {
+        // Reset shot count and clear existing shots
+        this.shotCount = 0;
+        this.shots.forEach(shot => shot.remove());
+        this.shots = [];
+    
+        // Optionally, reset the jet's position
+        this.posX = (window.innerWidth - BLOCK_SIZE) / 2;
+        this.posY = window.innerHeight - BLOCK_SIZE;
+        this.updatePosition();
     }
 }

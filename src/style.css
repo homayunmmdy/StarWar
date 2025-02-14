@@ -16,7 +16,7 @@ html {
 }
 
 .body {
-  background: url('images/space.webp') no-repeat center center;
+  background: url("images/space.webp") no-repeat center center;
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -26,7 +26,7 @@ html {
 
 .jet {
   display: block;
-  background: url('images/jet.png') no-repeat center center;
+  background: url("images/jet.png") no-repeat center center;
   background-size: cover;
   width: var(--blockSize);
   height: var(--blockSize);
@@ -47,4 +47,44 @@ html {
   width: 4px;
   height: 10px;
   background-color: red;
+}
+
+/* Game Over Message Styling */
+.game-over-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 48px;
+  font-family: "Arial", sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Restart Button Styling */
+.restart-button {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 24px;
+  font-family: "Arial", sans-serif;
+  color: white;
+  background-color: #ff4757;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.restart-button:hover {
+  background-color: #ff6b81;
+}
+
+.restart-button:active {
+  background-color: #ff4757;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
