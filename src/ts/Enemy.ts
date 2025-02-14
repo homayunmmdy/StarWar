@@ -8,7 +8,7 @@ export class Enemy {
 
     constructor(blockElement: HTMLElement) {
         this.blockElement = blockElement;
-        this.posY = 0; // Fixed at the top of the page
+        this.posY = Math.floor(Math.random() * 150); // Random Y position within the top 150px
         this.posX = this.getRandomXPosition(); // Random X position
         this.updatePosition();
         this.startRandomMovement();
@@ -29,16 +29,25 @@ export class Enemy {
     // Move the enemy randomly
     private moveRandomly(): void {
         const direction = Math.random() < 0.5 ? -1 : 1; // Randomly choose left or right
-        const distance = Math.floor(Math.random() * 20) + 10; // Random distance to move
+        const steps = Math.random() < 0.5 ? 1 : 2; // Randomly choose 1 or 2 steps
+        const distance = steps * 50; // Each step is 50px
 
         this.posX += direction * distance;
 
-        // Ensure the enemy stays within the bounds of the screen
+        // Ensure the enemy stays within the bounds of the screen horizontally
         const maxX = window.innerWidth - BLOCK_SIZE;
         if (this.posX < 0) {
             this.posX = 0;
         } else if (this.posX > maxX) {
             this.posX = maxX;
+        }
+
+        // Ensure the enemy stays within the top 150px vertically
+        const maxY = 150 - BLOCK_SIZE;
+        if (this.posY < 0) {
+            this.posY = 0;
+        } else if (this.posY > maxY) {
+            this.posY = maxY;
         }
 
         this.updatePosition();
