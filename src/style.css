@@ -37,16 +37,20 @@ html {
 
 .enemy {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: green;
+  width: var(--blockSize);
+  height: var(--blockSize);
+  background: url('images/enemy.png') no-repeat center center;
+  background-size: cover;
+  transform: rotate(180deg);
 }
 
 .shot {
   position: absolute;
   width: 4px;
   height: 10px;
-  background-color: red;
+  background: linear-gradient(to bottom, yellow, orange); /* Gradient effect */
+  border-radius: 50%; /* Make it circular */
+  box-shadow: 0 0 5px 2px rgba(255, 255, 0, 0.7); /* Glow effect */
 }
 
 /* Game Over Message Styling */

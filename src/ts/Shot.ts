@@ -11,12 +11,8 @@ export class Shot {
         // Create a new shot element
         this.shotElement = document.createElement("div");
         this.shotElement.className = "shot";
-        this.shotElement.style.position = "absolute";
         this.shotElement.style.left = `${this.posX}px`;
         this.shotElement.style.top = `${this.posY}px`;
-        this.shotElement.style.width = "4px";
-        this.shotElement.style.height = "10px";
-        this.shotElement.style.backgroundColor = "red";
         document.body.appendChild(this.shotElement);
 
         // Move the shot upwards and check for collisions
