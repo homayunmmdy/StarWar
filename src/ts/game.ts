@@ -2,7 +2,7 @@ import { Enemy } from "./Enemy";
 import { Jet } from "./Jet";
 
 class Game {
-    private jet: Jet;
+    public jet: Jet;
     private enemies: Enemy[] = [];
 
     constructor() {
