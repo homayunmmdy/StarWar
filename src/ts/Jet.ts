@@ -1,4 +1,5 @@
 import { BLOCK_SIZE, ENEMY_ZONE, MAXIMUM_SHOT } from "../config/config";
+import { playSound } from "./features/sound";
 import { Shot } from "./Shot";
 
 export class Jet {
@@ -73,6 +74,7 @@ export class Jet {
         // Create a new shot at the jet's current position
         const shot = new Shot(this.posX + BLOCK_SIZE / 2, this.posY);
         this.shots.push(shot);
+        playSound("shot")
         this.shotCount++;
 
         // Optionally, display the remaining shots
