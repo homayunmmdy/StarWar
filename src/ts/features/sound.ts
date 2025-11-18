@@ -3,7 +3,8 @@ import { SoundController } from "../controller/soundController.ts";
 
 // Preloaded sounds
 const sounds: SoundsFileType = {
-  shot: new Audio("sounds/shot.mp3"),
+  shot: new Audio("sounds/shot.wav"),
+  explosion: new Audio("sounds/explosion.wav"),
 };
 
 type SoundName = keyof SoundsFileType;

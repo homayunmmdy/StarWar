@@ -1,3 +1,5 @@
+import { playSound } from "./features/sound";
+
 export class Shot {
     private shotElement: HTMLElement;
     private posX: number;
@@ -48,6 +50,7 @@ export class Shot {
                 shotRect.bottom > enemyRect.top
             ) {
                 // Remove the enemy and the shot
+                playSound('explosion');
                 enemy.remove();
                 this.remove();
             }
