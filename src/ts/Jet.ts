@@ -1,4 +1,4 @@
-import { BLOCK_SIZE, MAXIMUM_SHOT } from "../config/config";
+import { BLOCK_SIZE, ENEMY_ZONE, MAXIMUM_SHOT } from "../config/config";
 import { Shot } from "./Shot";
 
 export class Jet {
@@ -41,7 +41,7 @@ export class Jet {
         switch (event.key) {
             case "ArrowUp": // Move up
             case "w":
-                if (this.posY - step >= 0) (this.posY -= step), (moved = true);
+                if (this.posY - step >= (ENEMY_ZONE + 100)) (this.posY -= step), (moved = true);
                 break;
             case "ArrowDown": // Move down
             case "s":

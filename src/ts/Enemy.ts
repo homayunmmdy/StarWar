@@ -1,4 +1,4 @@
-import { BLOCK_SIZE } from "../config/config";
+import { BLOCK_SIZE, ENEMY_ZONE } from "../config/config";
 
 export class Enemy {
     private blockElement: HTMLElement;
@@ -8,7 +8,7 @@ export class Enemy {
 
     constructor(blockElement: HTMLElement) {
         this.blockElement = blockElement;
-        this.posY = Math.floor(Math.random() * 150); // Random Y position within the top 150px
+        this.posY = Math.floor(Math.random() * ENEMY_ZONE); // Random Y position within the top 150px
         this.posX = this.getRandomXPosition(); // Random X position
         this.updatePosition();
         this.startRandomMovement();
